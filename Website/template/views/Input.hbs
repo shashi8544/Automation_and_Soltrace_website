@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This page explain about Input Parameter</title>
+    <style>
+        body {
+            background-color: rgb(233, 210, 133);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+        .box{
+            display: flex;
+            flex-direction: row;
+            font-size: 125%;
+        }
+        #img_zen{
+            height: 239px;
+            width: 425px;
+        }
+        .para_box{
+            width: 60%;
+        }
+        #space_zen{
+            width: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    {{>navbar}}
+    <div class="container">
+        <div id="para_angle" >
+            <h1>Sun</h1>
+            <h3>
+                Solar Zenith Angle:
+            </h3>
+            <div id="zenith_box" class="box">
+            <p id="para_zen" class="para_box">
+                The solar zenith angle is the angle between the sun and the vertical direction overhead. At solar noon,
+                when the sun is directly overhead, the solar zenith angle is zero. As the sun moves away from the
+                zenith, the solar zenith angle increases, reaching a maximum of 90 degrees at sunrise and sunset.
+            </p>
+            <div id="space_zen"></div>
+            <img id = "img_zen" src="zeinth_angle.jpeg" alt="No Img found">
+            </div>
+        </div>
+        <div id="para_collector">
+            <h1>Collector</h1>
+            <h3>Collector Aperture Geometry:</h3>
+            <div id="collector_box1" class="box">
+                <p id="para_coll1" class="para_box">
+                    It is the geometric aperture of the collector. We use a mirror with circular aperture as collector.
+                </p>
+            </div>
+            <h3>Collector aperture diameter:</h3>
+            <div id="collector_box2" class="box">
+                <p id="para_coll2" class="para_box">
+                    Diameter of the collector.
+                </p>
+            </div>
+            <h3>Collector surface geometry:</h3>
+            <div id="collector_box3" class="box">
+                <p id="para_coll3" class="para_box">
+                    Geometry of the collector surface, Whether mirror will be spherical or paraboloidal.
+                </p>
+            </div>
+            <h3>Curvature of collector:</h3>
+            <div id="collector_box4" class="box">
+                <p id="para_coll4" class="para_box">
+                    Radius of curvature of the collector surface geometry.                </p>
+            </div>
+        </div>
+        <div id="para_receiver">
+            <h1>Receiver</h1>
+            <h3>Receiver height:</h3>
+            <div id="receiver_box1" class="box">
+                <p id="para_recv1" class="para_box">
+                    Vertical distance of receiver from collector.
+                </p>
+            </div>
+            <h3>Receiver aperture geometry:</h3>
+            <div id="receiver_box2" class="box">
+                <p id="para_recv2" class="para_box">
+                    Geometry of aperture of receiver. We use circular base of hot cylinder of Stirling engine as receiver.
+                </p>
+            </div>
+            <h3>Receiver aperture diameter:</h3>
+            <div id="receiver_box3" class="box">
+                <p id="para_recv3" class="para_box">
+                    Diameter of receiver
+                </p>
+            </div>
+            <h3>Receiver surface geometry:</h3>
+            <div id="receiver_box4" class="box">
+                <p id="para_recv4" class="para_box">
+                    Geometry of the receiver surface. We use a flat receiver.                </p>
+            </div>
+        </div>
+            
+    </div>
+</body>
+
+</html>

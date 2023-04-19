@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flux Computation</title>
+  <style>
+    #title_res{
+      position: absolute;
+      top : 450px;
+    }
+    #text_container{
+      position: absolute;
+      top : 530px;
+      background-color: white;
+    }
+    #soltitle{
+      position: absolute;
+    left: 50px;
+    top: 75px;
+    }
+    #flux_img{
+      height: 300px;
+      width: 550px;
+      position: absolute;
+      top: 100px;
+      left: 742px;
+    }
+    .dot {
+  height: 45px;
+  width: 45px;
+  background-color: yellow;
+  border-radius: 50%;
+  position: absolute;
+  left : 800px;
+  top: 300px;
+}
+    #pararesult{
+      position: absolute;
+      top: 415px;
+      left: 760px;
+      font-size: larger;
+      font-weight: bolder;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    #tempres{
+      position: absolute;
+      top: 440px;
+      left: 760px;
+      font-size: larger;
+      font-weight: bolder;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .receiver{
+      width: 380px;
+      position: absolute;
+      top: 300px;
+      left: 950px;
+      border-top: 22px solid red;
+      border-radius: 12%;
+    }
+    body{
+      background-color: yellowgreen;
+    }
+    .container{
+      font-size: large;
+      font-weight: bold;
+    }
+    #paraa{
+      position: absolute;
+      left: 80px;
+      top: 160px;
+    }
+    #suna{
+      position: absolute;
+      left: 400px;
+      top: 160px;
+    }
+    #minusa{
+      position: absolute;
+      top: 160px;
+      left: 390px;
+      color: white;
+      background-color: red;
+      border: 2px solid black;
+    }
+    #plusa{
+      position: absolute;
+      top: 160px;
+      left: 577px;
+      color: white;
+      background-color: green;
+      border: 2px solid black;
+    }
+    #pararecdiaapp{
+      position: absolute;
+      left: 80px;
+      top: 190px;
+    }
+    #rappdia{
+      position: absolute;
+      left: 400px;
+      top: 190px;
+    }
+    #R_Surf_geom{
+      position: absolute;
+      left: 80px;
+      top: 220px;
+    }
+    #R_Surf_g{
+      position: absolute;
+      left: 400px;
+      top: 220px;
+    }
+    #pararecdiasurfC1{
+      position: absolute;
+      left: 80px;
+      top: 250px;
+    }
+    #rsurfdiaC1{
+      position: absolute;
+      left: 400px;
+      top: 250px;
+    }
+    #pararecdiasurfC2{
+      position: absolute;
+      left: 80px;
+      top: 280px;
+    }
+    #rsurfdiaC2{
+      position: absolute;
+      left: 400px;
+      top: 280px;
+    }
+    #paracolappgeom{
+      position: absolute;
+      left: 80px;
+      top: 310px;
+    }
+    #cappgeom{
+      position: absolute;
+      left: 400px;
+      top: 310px;
+    }
+    #butt1{
+      position: absolute;
+      left: 230px;
+      top: 400px;
+      height: 30px;
+      width: 125px;
+      background-color: blue;
+      font-size: large;
+      border: 2px solid red;
+      border-radius: 12px;
+    }
+    #butt1:hover {
+      background-color: aqua;
+    }
+    #minusx{
+      position: absolute;
+      top: 190px;
+      left: 390px;
+      color: white;
+      background-color: red;
+      border: 2px solid black;
+    }
+    #plusx{
+      position: absolute;
+      top: 190px;
+      left: 577px;
+      color: white;
+      background-color: green;
+      border: 2px solid black;
+    }
+    
+    #minusy{
+      position: absolute;
+      top: 250px;
+      left: 390px;
+      color: white;
+      background-color: red;
+      border: 2px solid black;
+    }
+    #plusy{
+      position: absolute;
+      top: 250px;
+      left: 577px;
+      color: white;
+      background-color: green;
+      border: 2px solid black;
+    }
+    #minusz{
+      position: absolute;
+      top: 280px;
+      left: 390px;
+      color: white;
+      background-color: red;
+      border: 2px solid black;
+    }
+    #plusz{
+      position: absolute;
+      top: 280px;
+      left: 577px;
+      color: white;
+      background-color: green;
+      border: 2px solid black;
+    }
+    #minusz1{
+      position: absolute;
+      top: 310px;
+      left: 390px;
+      color: white;
+      background-color: red;
+      border: 2px solid black;
+    }
+    #plusz1{
+      position: absolute;
+      top: 310px;
+      left: 577px;
+      color: white;
+      background-color: green;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  {{>navbar}}
+  <form action="/app" method="post">
+    <div class="container">
+      {{!-- <div class="posix" id="sun_pos_x">
+          <label id="parax">Sun_pos_x:</label>
+        <label id="minusx">-</label>
+        <input type="text" id="sunx" name="sunx" value="0">
+        <label id="plusx">+</label>
+      </div>
+      <div class="posiy" id="sun_pos_y">
+          <label id="paray">Sun_pos_y:</label>
+        <label id="minusy">-</label>
+        <input type="text" id="suny" name="suny" value="0">
+        <label id="plusy">+</label>
+      </div>
+      <div class="posiz" id="sun_pos_z">
+          <label id="paraz">Sun_pos_z:</label>
+        <label id="minusz">-</label>
+        <input type="text" id="sunz" name="sunz" value="0">
+        <label id="plusz">+</label>
+      </div> --}}
+    <h1 id="soltitle">Solar Flux Calculator</h1>
+    <div class="posia" id="sun_pos_a">
+        <label id="paraa">Solar Zenith Angle:</label>
+      <label id="minusa">-</label>
+      <input type="text" disabled id="suna" name="suna" value="0">
+      <label id="plusa">+</label>
+    </div>
+    {{!-- <div class="posirecapp" id="recapp">
+      <label id="R_App_geom">Choose a Collector Geometry:</label>
+      <select id="R_App_g" name="R_App_g">
+        <option value="Circular" disabled>Circular</option>
+        <option value="Parabolic">Parabolic</option>
+      </select>
+    </div> --}}
+    <div class="posirecappdia" id="recappdia">
+        <label id="pararecdiaapp">Collector Diameter:</label>
+        <label id="minusx">-</label>
+      <input type="text" disabled id="rappdia" name="rappdia" value="0.2">
+      <label id="plusx">+</label>
+    </div>
+    <div class="posirecsurf" id="recsurf">
+      <label id="R_Surf_geom">Collector Surface Geometry:</label>
+      <select id="R_Surf_g" name="R_Surf_g">
+        <option value="Spherical">Spherical</option>
+        <option value="Parabolic">Parabolic</option>
+      </select>
+    </div>
+    <div class="posirecsurfC1" id="recsurfC1">
+        <label id="pararecdiasurfC1">Collector Diameter Curvature:</label>
+        <label id="minusy">-</label>
+      <input type="text" disabled id="rsurfdiaC1" name="rsurfdiaC1" value="2.22">
+      <label id="plusy">+</label>
+    </div>
+    <div class="posirecsurfC2" id="recsurfC2">
+        <label id="pararecdiasurfC2">Height of Receiver from Collector:</label>
+        <label id="minusz">-</label>
+      <input type="text" disabled id="rsurfdiaC2" name="rsurfdiaC2" value="0.2">
+      <label id="plusz">+</label>
+    </div>
+    {{!-- <div class="posicolapp" id="colapp">
+      <label id="C_App_geoms">Choose a Receiver Geometry:</label>
+      <select id="C_App_geom" name="C_App_geom">
+        <option value="Circular">Circular</option>
+        <option value="Parabolic">Parabolic</option>
+      </select>
+    </div> --}}
+    <div class="posicolappg" id="colappg">
+        <label id="paracolappgeom">Receiver Aperture Diameter:</label>
+        <label id="minusz1">-</label>
+      <input type="text" disabled id="cappgeom" name="cappgeom" value="0.03">
+      <label id="plusz1">+</label>
+    </div>
+    <div class="posibutt" id="butt">
+      <input id = "butt1" type="button" class="compute-flux" value="Compute Flux">
+    </div>
+    </div>
+  </form>
+  <div class="result"></div>
+  <div id = "flux_img_container">
+  {{!-- <span class="dot" id="dot1"></span> --}}
+  {{!-- <img src="" id="flux_img" alt=""> --}}
+</div>
+<div id="text_container">
+</div>
+  {{!-- <img id = "receiverimg" src="receiver.png" alt="Image Not Found"> --}}
+  <script>
+    function display(flag,fluxarr,sunposa){
+          
+          const result = document.querySelector(".result");
+          if(flag){
+          const fluxImg = document.querySelector("#flux_img_container");
+          //const imgPath = fluxarr.S_No +  "_flux.png";
+          fluxImg.innerHTML = `<img src="${fluxarr.S_No +  "_flux.png"}" id="flux_img" alt="">`;
+          //fluxImg.src = imgPath;
+              if(fluxarr.Avg_Flux!=0){
+                result.innerHTML = `<p id ="pararesult">Average Flux obtained : ${fluxarr.Avg_Flux} W/m<sup>2</sup></p>
+                <p id="tempres">Hot Cylinder Temperature : ${Math.round(fluxarr.T_hot)} K</p>`;
+              }
+              
+              else{
+              result.innerHTML = `<p id = "pararesult">Concentrated solar rays not falling on receiver.</p>`;
+              }
+          }
+          else{
+              result.innerHTML = `<p id = "pararesult">Dataset is not available.</p>`
+          }
+          const fluxTxt = document.querySelector("#text_container");
+          fluxTxt.innerHTML = `
+          <h1>Result Obtained</h1>
+          <iframe
+    src="${fluxarr.S_No+'.txt'}"
+    scrolling="yes"
+    height = "500px"
+    text-size = "large"
+    width="1335px">
+</iframe>`;
+    }
+    (function callcompute() {
+      const computeFluxBtn = document.querySelector(".compute-flux");
+      computeFluxBtn.addEventListener("click", async () => {
+        const sunposa = document.querySelector("#suna").value;
+        //let temp1 = document.querySelector("#R_App_g").value;
+        //console.log(temp1+"lkdsjlkf");
+        
+        //const R_App_g1 = temp1 == "Circular" ? 'c' : 'p';
+        
+        const rappdia1 = document.querySelector("#rappdia").value;
+        let temp2 = document.querySelector("#R_Surf_g").value;
+        console.log(temp2+"jsdlksd");
+        const R_Surf_g1 = temp2 == "Spherical" ? 's' : 'p';
+        console.log(R_Surf_g1)
+        const recsurfdiaC1 = document.querySelector("#rsurfdiaC1").value;
+        const recsurfdiaC2 = document.querySelector("#rsurfdiaC2").value;
+        //const temp3 = document.querySelector("#C_App_geom").value;
+        //const C_App_geom1 = temp3 == "Circular" ? 'c' : 'p';
+        const cappgeom1 = document.querySelector("#cappgeom").value;
+        console.log("here is "+sunposa)
+        fetch("/getdata", {
+          // Adding method type
+          method: "POST",
+          // Adding body or contents to send
+          body: JSON.stringify({
+            sunposa: sunposa,
+           //R_App_g1: R_App_g1,
+            rappdia1: rappdia1,
+            R_Surf_g1: R_Surf_g1,
+            recsurfdiaC1: recsurfdiaC1,
+            recsurfdiaC2: recsurfdiaC2,
+            //C_App_geom1: C_App_geom1,
+            cappgeom1: cappgeom1,
+          }),
+
+          // Adding headers to the request
+          headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+        })
+          .then(res => {
+            //console.log(res)
+            return res.json();
+          }).then(
+            data => {
+              console.log(data)
+              console.log(data.data[0]);
+              if(data.data[0]){
+
+                 display(true, data.data[0],sunposa);
+              }else{
+                display(false,data.data[0],sunposa);
+              }
+            }
+          )
+          .catch(error => console.log(error));
+        //const data = await res.json();
+        //console.log(data);
+        //const result = document.querySelector(".result");
+        /*result.innerHTML = `${JSON.stringify(data)}`;*/
+        //console.log(data.data);
+        //console.log(data.data[0].Avg_Flux);
+        //ans = data.data[0].Avg_Flux;
+        //document.write(ans);
+      });
+    })();
+    
+    /*
+           function computeFlux(e){
+              e.preventDefault();
+              alert('compute flux');
+           }
+           */
+
+(function () {
+
+      let inputContainer = document.querySelector(".posicolappg");
+      let a = [0.03]
+      let input = inputContainer.querySelector("#cappgeom");
+      let minus = inputContainer.querySelector("#minusz1");
+      let plus = inputContainer.querySelector("#plusz1");
+      let i = 0;
+      function changeNumber(e) {
+        if (e.target == minus) {
+          if (i > 0) {
+            i = i - 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        } else if (e.target == plus) {
+          if (i < 0 && i >= 0) {
+            i = i + 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        }
+      }
+
+      inputContainer.addEventListener("click", changeNumber);
+    })();
+
+(function () {
+
+      let inputContainer = document.querySelector(".posirecsurfC2");
+      let a = [0.20,0.21,0.22,0.23]
+      let input = inputContainer.querySelector("#rsurfdiaC2");
+      let minus = inputContainer.querySelector("#minusz");
+      let plus = inputContainer.querySelector("#plusz");
+      let i = 0;
+      function changeNumber(e) {
+        if (e.target == minus) {
+          if (i > 0) {
+            i = i - 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        } else if (e.target == plus) {
+          if (i < 3 && i >= 0) {
+            i = i + 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[3];
+            i = 3;
+          }
+        }
+      }
+
+      inputContainer.addEventListener("click", changeNumber);
+    })();
+
+(function () {
+
+      let inputContainer = document.querySelector(".posirecsurfC1");
+      let a = [2.22]
+      let input = inputContainer.querySelector("#rsurfdiaC1");
+      let minus = inputContainer.querySelector("#minusy");
+      let plus = inputContainer.querySelector("#plusz");
+      let i = 0;
+      function changeNumber(e) {
+        if (e.target == minus) {
+          if (i > 0) {
+            i = i - 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        } else if (e.target == plus) {
+          if (i < 0 && i >= 0) {
+            i = i + 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        }
+      }
+
+      inputContainer.addEventListener("click", changeNumber);
+    })();
+
+(function () {
+
+      let inputContainer = document.querySelector(".posirecappdia");
+      let a = [0.2,0.3,0.4]
+      let input = inputContainer.querySelector("#rappdia");
+      let minus = inputContainer.querySelector("#minusx");
+      let plus = inputContainer.querySelector("#plusx");
+      let i = 0;
+      function changeNumber(e) {
+        if (e.target == minus) {
+          if (i > 0) {
+            i = i - 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        } else if (e.target == plus) {
+          if (i < 2 && i >= 0) {
+            i = i + 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[2];
+            i = 2;
+          }
+        }
+      }
+
+      inputContainer.addEventListener("click", changeNumber);
+    })();
+    (function () {
+
+      let inputContainer = document.querySelector(".posia");
+      let a = [0,1,2,3,4,5]
+      let input = inputContainer.querySelector("#suna");
+      let minus = inputContainer.querySelector("#minusa");
+      let plus = inputContainer.querySelector("#plusa");
+      let i = 0;
+      function changeNumber(e) {
+        if (e.target == minus) {
+          if (i > 0) {
+            i = i - 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[0];
+            i = 0;
+          }
+        } else if (e.target == plus) {
+          if (i < 5 && i >= 0) {
+            i = i + 1;
+            input.value = a[i];
+          }
+          else {
+            input.value = a[5];
+            i = 5;
+          }
+        }
+      }
+
+      inputContainer.addEventListener("click", changeNumber);
+    })();
+    
+  </script>
+</body>
+
+</html>

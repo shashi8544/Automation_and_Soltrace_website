@@ -1,0 +1,152 @@
+
+::selection {
+  background: transparent;
+}
+body{
+    background-color: aqua;
+}
+.container {
+  position: absolute;
+  left: 200px;
+  top: 100px;
+  /* transform: translateX(-50%); */
+}
+.container1 {
+  position: absolute;
+  left: 200px;
+  top: 150px;
+  /* transform: translateX(-50%); */
+}
+.container2 {
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  /* transform: translateX(-50%); */
+}
+.container3 {
+  position: absolute;
+  left: 200px;
+  top: 250px;
+  /* transform: translateX(-50%); */
+}
+.container4 {
+  position: absolute;
+  left: 200px;
+  top: 300px;
+  /* transform: translateX(-50%); */
+}
+.container5 {
+  position: absolute;
+  left: 200px;
+  top: 350px;
+  /* transform: translateX(-50%); */
+}
+
+input {
+    font-family: 'Major Mono Display', monospace;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-size: 2em;
+    color: #444;
+    text-align: center;
+}
+
+.input-container {
+    position: relative;
+    width: 250px;
+}
+.input-container1 {
+    position: relative;
+    width: 250px;
+}
+
+#minus,
+#plus {
+    font-family: 'Major Mono Display', monospace;
+    background: #E84F40;
+    color: #fff;
+    font-weight: 900;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    height: 100%;
+    cursor: pointer;
+}
+        li{
+            margin: 23px;
+            list-style: none;
+        }
+        ul{
+            display: flex;
+        }
+
+#minus {
+    content: "-";
+    top: 0;
+    left: 0;
+}
+#para{
+position: absolute;
+  left: 0px;
+  top: 100px;
+}
+#para1{
+position: absolute;
+  left: 0px;
+  top: 150px;
+}
+#para2{
+position: absolute;
+  left: 0px;
+  top: 200px;
+}
+#para3{
+position: absolute;
+  left: 0px;
+  top: 250px;
+}
+#para4{
+position: absolute;
+  left: 0px;
+  top: 300px;
+}
+#para5{
+position: absolute;
+  left: 0px;
+  top: 350px;
+}
+#plus {
+    content: "+";
+    right: 0;
+    top: 0;
+}
+#butt{
+    position: absolute;
+    top: 500px;
+    left: 200px;
+    color: white;
+    background-color: rgb(36, 207, 13);
+    margin: 12px;
+    padding: 10px;
+}
+#result1{
+    position: absolute;
+    top: 500px;
+    left: 500px;
+    color: white;
+    background-color: rgb(36, 207, 13);
+    margin: 12px;
+    padding: 10px;
+}
+#result2{
+    position: absolute;
+    top: 500px;
+    left: 700px;
+    color: white;
+    background-color: rgb(36, 207, 13);
+    margin: 12px;
+    padding: 10px;
+}

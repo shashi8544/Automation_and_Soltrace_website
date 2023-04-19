@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Computation</title>
+    
+</head>
+<body>
+    {{>navbar}}
+    <form action="/app" method="post">
+    <div class="container">
+      <div class="posi" id="sun_pos_x">
+        <div>
+          <p id="parax">Sun_pos_x:</p>
+        </div>
+        <div id="minus">-</div>
+        <input type="text" id="sunx" name = "sunx" value="0">
+        <div id="plus">+</div>
+      </div>
+      <div class="posi" id="sun_pos_y">
+        <div>
+          <p id="paray">Sun_pos_y:</p>
+        </div>
+        <div id="minus">-</div>
+        <input type="text" id="suny" name = "suny" value="0">
+        <div id="plus">+</div>
+      </div>
+      <div class="posi" id="sun_pos_z">
+        <div>
+          <p id="paraz">Sun_pos_z:</p>
+        </div>
+        <div id="minus">-</div>
+        <input type="text" id="sunz" name = "sunz" value="0">
+        <div id="plus">+</div>
+      </div>
+      </div>
+      <div class="posi" id="sun_pos_a">
+        <div>
+          <p id="paraa">Sun_Angle:</p>
+        </div>
+        <div id="minus">-</div>
+        <input type="text" id="suna" name = "suna" value="0">
+        <div id="plus">+</div>
+      </div>
+      </div>
+    </form>
+    <form action="/app" method="post">
+    
+    <div><p id="para1">Sun_pos_z:</p></div>
+    <div class="container1">  
+        <div class="input-container1">
+          <div id="minus">-</div>
+          <input type="text" name = 'Sunz' id="Sunz" value="0">
+
+          <div id="plus">+</div>
+        </div>
+      </div>
+
+    <div><p id="para2">R_App_geom:</p></div>
+    <div class="container2">  
+        <span>
+            C <input type="radio" name="c2" style="horizontal-align: middle"> P <input type="radio" name="c2" style="vertical-align: middle">
+ </span>
+      </div>
+    <div><p id="para3">R_Surf_geom:</p></div>
+    <div class="container3">  
+        <div>
+            S <input type="radio" name="c3"> C <input type="radio" name="c3">
+ </div>
+      </div>
+    <div><p id="para4">C_App_geom:</p></div>
+    <div class="container4">  
+        <div>
+            C <input type="radio" name="c4"> P <input type="radio" name="c4">
+ </div>
+      </div>
+    <div><p id="para5">C_Surf_geom:</p></div>
+    <div class="container5">  
+        <div>
+            S <input type="radio" name="c5"> C <input type="radio" name="c5">
+ </div>
+      </div>
+    <div class="btn" id="butt">
+        <input type="button" class="compute-flux" value="Compute Flux">
+    </div>
+    <div id="result1">
+        <input type="button" class="show" value="show">
+    </div>
+    <div id="result2">
+        
+        <input type="button" class="hide" value="hide">
+    </div>
+    </form>
+    <script>
+      
+      let ans;
+      (function(){
+       const computeFluxBtn = document.querySelector(".compute-flux");
+       computeFluxBtn.addEventListener("click", async() => {
+          const sunPosZ = document.querySelector("#Sunz").value;
+          console.log(sunPosZ)
+          fetch("/getdata", {
+    // Adding method type
+    method: "POST",
+     
+    // Adding body or contents to send
+    body: JSON.stringify({
+        sunPosZ : sunPosZ
+    }),
+     
+    // Adding headers to the request
+    headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    }
+})
+            .then(res =>{
+              //console.log(res)
+              return res.json();
+            }).then(
+              data =>{
+                console.log(data)
+              }
+            )
+            .catch(error => console.log(error));
+          //const data = await res.json();
+          //console.log(data);
+          //const result = document.querySelector(".result");
+          /*result.innerHTML = `${JSON.stringify(data)}`;*/
+          //console.log(data.data);
+          //console.log(data.data[0].Avg_Flux);
+          //ans = data.data[0].Avg_Flux;
+          //document.write(ans);
+       });
+       //console.log(ans);
+      })();
+      
+        
+/*
+       function computeFlux(e){
+          e.preventDefault();
+          alert('compute flux');
+       }
+       */
+
+        (function(){
+
+let inputContainer = document.querySelector(".input-container");
+let a = [100,200,300,400]
+
+let input = inputContainer.firstElementChild.nextElementSibling;
+let minus = inputContainer.firstElementChild;
+let plus = inputContainer.lastElementChild;
+let i = 0;
+function changeNumber(e) {
+    if(e.target == minus) {
+        if(i>0){
+            i = i-1;
+            input.value = a[i];
+        }
+        else{
+            input.value = a[0];
+            i = 0;
+        }
+    } else if(e.target == plus) {
+        if(i<3 && i>=0){
+            i = i+1;
+            input.value = a[i];
+        }
+        else{
+            input.value = a[3];
+            i = 3;
+        }
+    }
+}
+
+inputContainer.addEventListener("click", changeNumber);
+})();
+        (function(){
+
+let inputContainer = document.querySelector(".input-container1");
+let input = inputContainer.firstElementChild.nextElementSibling;
+let minus = inputContainer.firstElementChild;
+let plus = inputContainer.lastElementChild;
+let b = [100,200,300,400]
+let j = 0;
+
+function changeNumber(e) {
+    if(e.target == minus) {
+        if(j>0){
+            j = j-1;
+            input.value = b[j];
+        }
+        else{
+            input.value = b[0];
+            j = 0;
+        }
+    } else if(e.target == plus) {
+        if(j<3 && j>=0){
+            j = j+1;
+            input.value = b[j];
+        }
+        else{
+            input.value = b[3];
+            j = 3;
+        }
+    }
+}
+
+inputContainer.addEventListener("click", changeNumber);
+})();
+    </script>
+</body>
+</html>
