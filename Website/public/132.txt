@@ -1,0 +1,19 @@
+    ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** *****
+ 
+ 
+ 
+ The maximum engine volume (m^3) =         0.0002354383
+ The minimum engine volume (m^3) =         0.0001124017
+ Compression ratio: (max. engine volume)/(min. engine volume) =         2.0946148360
+ The heater volume (m^3) =         0.0000007200
+ The regenerator void volume (m^3) =         0.0000720000
+ The cooler volume (m^3) =         0.0000007200
+ The mass of working gas in the engine (kg) =         0.0000964508
+ Assuming an ambient temp. of roughly 20 deg C, initially pressurize the engine to a gauge pressure (psi) of        -9.7009667639
+ 
+ 
+ 
+ 
+ Engine speed(Hz)        Power(W)     Thermal efficiency(%)     Torque(N.m)     Average engine pressure(Pa)
+            1.000           1.820                    34.912           0.290                       95966.874
+            2.000          -8.065                  -290.772          -0.642                       99388.507
