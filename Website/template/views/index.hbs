@@ -1,19 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is index page</title>
+    <title>About Project</title>
+    <link rel="icon" href="beta.png" type="image/icon type">
     <style>
-        body{
+        body {
             background-color: rgb(131, 222, 250);
         }
-        
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .divd1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #part0 {
+            font-size: larger;
+            border: 2px solid gray;
+            background-color: azure;
+            margin: auto;
+            padding: 10px;
+            border-radius: 13px;
+        }
+
+        #part1 {
+            font-size: larger;
+            border: 2px solid gray;
+            background-color: azure;
+
+            padding: 10px;
+            border-radius: 13px;
+        }
+
+        .box_type {
+            border: 2px solid black;
+            background-color: rgb(245, 245, 226);
+            margin: auto;
+            padding: 10px;
+            border-radius: 13px;
+        }
+
+        #twotype {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #box_type_1 {
+            width: 48%;
+        }
+
+        #box_type_2 {
+            width: 48%;
+        }
+        .type_str{
+            width: 90%;
+        }
+        #stir_type {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .stir_type_img {
+            width: 20%;
+        }
     </style>
 </head>
+
 <body>
     {{>navbar}}
-    
+    <div class="container">
+        <h1 style="text-align: center;">Solar-Powered Stirling Engine</h1>
+        {{!-- <h2>Types of Stirling Engines</h2> --}}
+        
+    <div class="divd1" id="part0">
+        <p id="part0_para" style="width: 60%;">Stirling Engine is an external combustion engine that uses air or an
+            inert gas as the working fluid and
+            can convert thermal energy to kinetic energy. It operates in a closed cycle and has the highest
+            efficiency among other heat engines. High efficiency of Stirling Engine makes it a suitable alternative
+            to be used in thermal solar power plants instead of solar panels.</p>
+        <img style="height: 169px; width: 512px; left:100px" src="sterling.gif"></img>
+    </div>
+    <h2>Concentrating Solar Power (CSP) Systems</h2>
+    <div class="divd" id="part1">
+        <p style="font-size: larger;">Concentrating Solar Power (CSP) technologies use mirrors to concentrate (focus)
+            the sun's light energy and convert it into heat to create steam to drive a turbine that generates electrical
+            power.</p>
+        <div id="twotype">
+            <div id="box_type_1" class="box_type">
+                <p>point-focus reflectors</p>
+                <img src="csp1.png" alt="">
+            </div>
+            <div id="box_type_2" class="box_type">
+                <p>line-focus reflectors </p>
+                <img src="csp2.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="divd" id="part1">
+            <p style="font-size: larger;">Types of Stirling Engines</p>
+            <div id="twotype">
+                <div id="stir_type_1" class="stir_type">
+                    <p>alpha</p>
+                    <img class ="type_str"src="alpha.png" alt="">
+                </div>
+                <div id="stir_type_2" class="stir_type">
+                    <p>beta </p>
+                    <img class ="type_str" src="beta.png" alt="">
+                </div>
+                <div id="stir_type_3" class="stir_type">
+                    <p>gamma</p>
+                    <img class ="type_str" src="gamma.png" alt="">
+                </div>
+            </div>
+    </div>
+    <div class="divd" id="part2">
+
+    </div>
+    </div>
 </body>
+
 </html>
